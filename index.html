@@ -1,0 +1,2786 @@
+ <meta charset="UTF-8">
+  <title>SVEN</title>
+
+  <meta name="robots" content="noindex">
+
+
+  <meta content="#181d23" name="theme-color">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta name="author" content="Yago Estévez">
+  <meta name="description" content="Portfolio Website by Yago Estévez">
+  <meta name="keywords" content="portfolio, css, javascript, software, coding, programming, web, development, developer, fullstack, frontend, freecodecamp, es2015">
+  
+
+  <style class="INLINE_PEN_STYLESHEET_ID">
+    /* Made by Yago Estévez (Twitter: @yagoestevez.com) */
+
+*,
+*::before,
+*::after,
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import 'https://fonts.googleapis.com/css?family=Overlock:400,400i,700|Oleo+Script';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #252934;
+  background: #fafafa;
+  font-size: 62.5%;
+  font-family: 'Overlock', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a,
+a:visited {
+  color: #d7bc42;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: 200ms;
+}
+
+a:hover,
+a:active {
+  color: #f300b4;
+}
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+    MENU STYLES
+ *****************
+ *****************/
+
+/***** Overlay Layer *****/
+.menu-container > .overlay,
+.menu-container.active > .overlay {
+  position: absolute;
+  right: 0;
+  height: calc( 100vh - 120px );
+  width: calc( 100vw - 120px );
+  background: #fafafa;
+}
+
+.menu-container.active > .overlay {
+  -webkit-animation: overlay-slide-in 300ms forwards 300ms;
+          animation: overlay-slide-in 300ms forwards 300ms;
+}
+
+@-webkit-keyframes overlay-slide-in {
+  from {
+    width: calc( 100vw - 120px );
+  }
+  to {
+    width: 0;
+  }
+}
+
+@keyframes overlay-slide-in {
+  from {
+    width: calc( 100vw - 120px );
+  }
+  to {
+    width: 0;
+  }
+}
+
+.menu-container > .overlay {
+  -webkit-animation: overlay-slide-out 300ms forwards;
+          animation: overlay-slide-out 300ms forwards;
+}
+
+@-webkit-keyframes overlay-slide-out {
+  from {
+    left: 0;
+    width: 0;
+  }
+  to {
+    left: 0;
+    width: calc( 100vw - 120px );
+  }
+}
+
+@keyframes overlay-slide-out {
+  from {
+    left: 0;
+    width: 0;
+  }
+  to {
+    left: 0;
+    width: calc( 100vw - 120px );
+  }
+}
+
+/***** Menu Layer *****/
+.menu-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: #202934;
+  border: 60px solid #181d23;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.menu-container::before,
+.menu-container::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.menu-container::before {
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
+}
+
+.menu-container::after {
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true) bottom repeat-x;
+}
+
+.menu-container.deactive {
+  -webkit-animation: fade-out 600ms forwards;
+          animation: fade-out 600ms forwards;
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+    z-index: 999;
+  }
+  50% {
+    opacity: 1;
+    z-index: 999;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    z-index: 999;
+  }
+  50% {
+    opacity: 1;
+    z-index: 999;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.menu-container.active {
+  -webkit-animation: fade-in 300ms forwards;
+          animation: fade-in 300ms forwards;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    z-index: 999;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    z-index: 999;
+  }
+}
+
+/***** Menu Items: Animation *****/
+.menu-container ul,
+.menu-container .social {
+  margin-left: -80px;
+  opacity: 0;
+  -webkit-animation: slide-out 200ms forwards;
+          animation: slide-out 200ms forwards;
+}
+
+.menu-container ul {
+  list-style-type: none !important;
+  font-size: 3rem;
+}
+
+@-webkit-keyframes slide-out {
+  from {
+    opacity: 1;
+    margin-left: 0px;
+  }
+  to {
+    opacity: 0;
+    margin-left: -80px;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    margin-left: 0px;
+  }
+  to {
+    opacity: 0;
+    margin-left: -80px;
+  }
+}
+
+.menu-container.active ul,
+.menu-container.active .social {
+  -webkit-animation: slide-in 300ms forwards 600ms;
+          animation: slide-in 300ms forwards 600ms;
+}
+
+@-webkit-keyframes slide-in {
+  from {
+    opacity: 0;
+    margin-left: -80px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    margin-left: -80px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
+/***** Menu Items: Hover Animation *****/
+.menu-container ul li {
+  border-left: .2rem solid transparent;
+  transition: border-left 200ms;
+}
+
+.menu-container ul li a {
+  font-size: 3rem; 
+  padding-left: .5rem;
+}
+
+.menu-container ul li a::after {
+  content: ' »';
+  font-size: 2.5rem;
+  color: transparent;
+  transition: color 200ms;
+}
+
+.menu-container ul li a:hover::after {
+  content: ' »';
+  color: #f300b4;
+}
+
+.social {
+  padding: 1rem 0 0 .5rem;
+}
+
+.social a {
+  font-size: 1.5rem;
+  padding: .2rem;
+}
+
+.menu-container a,
+.menu-container a:visited {
+  color: #fafafa;
+}
+
+.menu-container a:hover,
+.menu-container a:active {
+  color: #f300b4;
+}
+
+@media only screen and (max-width: 649px) {
+  .menu-container {
+    border: none;
+  }
+
+  .menu-container > .overlay,
+  .menu-container.active > .overlay {
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .menu-container.active > .overlay {
+    -webkit-animation: overlay-slide-in 300ms forwards 300ms;
+            animation: overlay-slide-in 300ms forwards 300ms;
+  }
+  
+  @-webkit-keyframes overlay-slide-in {
+    from {
+      width: 100vw;
+    }
+    to {
+      width: 0;
+    }
+  }
+  
+  @keyframes overlay-slide-in {
+    from {
+      width: 100vw;
+    }
+    to {
+      width: 0;
+    }
+  }
+  
+  .menu-container > .overlay {
+    -webkit-animation: overlay-slide-out 300ms forwards;
+            animation: overlay-slide-out 300ms forwards;
+  }
+  
+  @-webkit-keyframes overlay-slide-out {
+    from {
+      left: 0;
+      width: 0;
+    }
+    to {
+      left: 0;
+      width: 100vw;
+    }
+  }
+  
+  @keyframes overlay-slide-out {
+    from {
+      left: 0;
+      width: 0;
+    }
+    to {
+      left: 0;
+      width: 100vw;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+    NAV STYLES
+ *****************
+ *****************/
+
+#navbar {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+#navbar.bg-active {
+  background: #181d23;
+}
+
+#navbar .nav-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+#navbar .brand {
+  font-size: 1.6rem;
+  color: #fafafa;
+  cursor: default;
+}
+
+/***** Menu Button *****/
+.menu-button {
+  position: relative;
+  height: 22px;
+  width: 30px;
+  outline: none;
+}
+
+.menu-button span,
+.menu-button span::before,
+.menu-button span::after {
+  position: absolute;
+  content: '';
+  width: 30px;
+  height: 3px;
+  background: #fafafa;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.menu-button span {
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+
+.menu-button span::before {
+  top: -8px;
+}
+
+.menu-button span::after {
+  top: 8px;
+}
+
+.menu-button:hover > span,
+.menu-button:hover > span::before,
+.menu-button:hover > span::after {
+  background: #f300b4;
+}
+
+.menu-button.active > span  {
+  background: transparent;
+}
+
+.menu-button.active > span::before  {
+  transform: rotate(-225deg);
+  top: 0px;
+}
+
+.menu-button.active > span::after  {
+  transform: rotate(225deg);
+  top: 0px;
+}
+
+@media only screen and (max-width: 849px) {
+  #navbar {
+    background: #181d23aa;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+   HEADER STYLES
+ *****************
+ *****************/
+
+#welcome-section {
+  background: #202736;
+  background: linear-gradient(to bottom, #181d23 0%, #202736 80%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+#welcome-section::before {
+  content: '';
+  position: fixed;
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -1;
+  opacity: 0;
+  -webkit-animation: stars-move-in 1000ms 300ms forwards;
+          animation: stars-move-in 1000ms 300ms forwards;
+}
+
+@-webkit-keyframes stars-move-in {
+  from {
+    background-position-y: -100px;
+  }
+  to {
+    opacity: 1;
+    background-position-y: 0;
+  }
+}
+
+@keyframes stars-move-in {
+  from {
+    background-position-y: -100px;
+  }
+  to {
+    opacity: 1;
+    background-position-y: 0;
+  }
+}
+
+.forest {
+  position: absolute;
+  bottom: -300px;
+  left: 0;
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true) bottom left repeat-x;
+  background-size: cover;
+  width: 100%;
+  height: 80%;
+  opacity: 0;
+  -webkit-animation: forest-move-in 1000ms 500ms forwards;
+          animation: forest-move-in 1000ms 500ms forwards;
+  border-bottom: 300px solid #181d23;
+}
+
+@-webkit-keyframes forest-move-in {
+  from {
+    background-position-y: 150%;
+  }
+  to {
+    opacity: 1;
+    background-position-y: 100%;
+  }
+}
+
+@keyframes forest-move-in {
+  from {
+    background-position-y: 150%;
+  }
+  to {
+    opacity: 1;
+    background-position-y: 100%;
+  }
+}
+
+.silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Silhouette.svg?sanitize=true) bottom left no-repeat;
+  width: 50%;
+  height: 50%;
+  opacity: 0;
+  -webkit-animation: silhouette-move-in 1000ms 800ms forwards;
+          animation: silhouette-move-in 1000ms 800ms forwards;
+}
+
+@-webkit-keyframes silhouette-move-in {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    opacity: 1;
+    background-position-x: 50%;
+  }
+}
+
+@keyframes silhouette-move-in {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    opacity: 1;
+    background-position-x: 50%;
+  }
+}
+
+.moon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  position: fixed;
+  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Moon.svg?sanitize=true) right 150% no-repeat;
+  background-size: 40% 40%;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  -webkit-animation: moon-move-in 1.2s 1s forwards;
+          animation: moon-move-in 1.2s 1s forwards;
+}
+
+@-webkit-keyframes moon-move-in {
+  from {
+    opacity: 0;
+    background-position: right 150%;
+  }
+  to {
+    opacity: 1;
+    background-position: top right;
+  }
+}
+
+@keyframes moon-move-in {
+  from {
+    opacity: 0;
+    background-position: right 150%;
+  }
+  to {
+    opacity: 1;
+    background-position: top right;
+  }
+}
+
+/* Copy and CTA */
+#welcome-section .container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  right: 25%;
+  opacity: 0;
+  transform: translate(0, -50%);
+  -webkit-animation: text-fade-in 1000ms 800ms forwards;
+          animation: text-fade-in 1000ms 800ms forwards;
+}
+
+@-webkit-keyframes text-fade-in {
+  from {
+    right: 0;
+  }
+  to {
+    opacity: 1;
+    right: 25%;
+  }
+}
+
+@keyframes text-fade-in {
+  from {
+    right: 0;
+  }
+  to {
+    opacity: 1;
+    right: 25%;
+  }
+}
+
+#welcome-section .container h1 {
+  font-size: 4rem;
+  font-weight: normal;
+  font-style: italic;
+  color: #fafafa;
+  line-height: 3rem;
+}
+
+#welcome-section .container h1 .line:first-child {
+  margin-left: 1rem;
+}
+
+#welcome-section .container h1 .line:last-child {
+  margin-left: 2rem;
+}
+
+#welcome-section .container .buttons {
+  display: flex;
+  margin-top: 1rem;
+}
+
+#welcome-section .container .buttons a,
+#welcome-section .container .buttons a:visited {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #fafafa;
+  color: #fafafa;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+#welcome-section .container .buttons a:hover,
+#welcome-section .container .buttons a:active {
+  border: 1px solid #f300b4;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 100px -20px #f300b4;
+}
+
+#welcome-section .container .buttons a.cta,
+#welcome-section .container .buttons a.cta:visited {
+  background: #f300b4;
+  border: 1px solid transparent;
+  color: #fafafa;
+  font-weight: bold;
+}
+
+#welcome-section .container .buttons a.cta:hover,
+#welcome-section .container .buttons a.cta:active {
+  background: transparent;
+  border: 1px solid #f300b4;
+}
+
+#welcome-section .container .buttons a:first-child {
+  margin-right: 1rem;
+}
+
+.line {
+  display: block;
+}
+
+.color {
+  color: #f300b4;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 649px) {
+  #welcome-section .container {
+    right: 50%;
+    top: 10%;
+    width: 80%;
+    transform: translate(50%, 0);
+    -webkit-animation: text-fade-in 1000ms 800ms forwards;
+            animation: text-fade-in 1000ms 800ms forwards;
+  }
+
+  @-webkit-keyframes text-fade-in {
+    from {
+      right: 0;
+    }
+    to {
+      opacity: 1;
+      right: 50%;
+    }
+  }
+
+  @keyframes text-fade-in {
+    from {
+      right: 0;
+    }
+    to {
+      opacity: 1;
+      right: 50%;
+    }
+  }
+
+  .silhouette {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+   ABOUT STYLES
+ *****************
+ *****************/
+
+#about {
+  height: 100%;
+  min-height: 100vh;
+  font-size: 1.4rem;
+  position: relative;
+  background: #fafafa;
+  -webkit-clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
+          clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
+  z-index: 5;
+  background: #fafafa url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Author_BG.jpg) center right no-repeat;
+  background-attachment: fixed;
+}
+
+#about .wrapper {
+  padding: 15rem 10rem 12rem;
+  height: 100%;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#about article {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  padding: 3rem 0;
+}
+
+#about .title {
+  grid-column-end: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#about .title h3 {
+  font-size: 2.4rem;
+}
+
+#about .separator {
+  background: #f300b4;
+  width: 150px;
+  height: 2px;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+#about .subtitle {
+  font-size: 1.6rem;
+  text-align: center;
+  color: inherit;
+  padding-bottom: 1.5rem;
+}
+
+#about p {
+  padding-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.9rem;
+}
+
+#about .desc.full {
+  grid-column-end: span 4;
+  margin-bottom: 2rem;
+}
+
+#about .desc {
+  grid-column-end: span 2;
+  background: #ffffffaa;
+  padding: 2rem;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 1149px) {
+  #about article {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+  #about .desc.full {
+    grid-column-end: -1;
+  }
+
+  #about .desc {
+    grid-column-end: -1;
+  }
+}
+@media only screen and (max-width: 949px) {
+  #about {
+    -webkit-clip-path: polygon(0 0, 20% 2%, 100% 0, 100% 100%, 80% 98%, 0 100%);
+            clip-path: polygon(0 0, 20% 2%, 100% 0, 100% 100%, 80% 98%, 0 100%);
+    background-position: top left;
+    background-size: cover;
+  }
+}
+@media only screen and (max-width: 649px) {
+  #about .wrapper {
+    padding: 10rem 2rem 8rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+  PROJECTS STYLES
+ *****************
+ *****************/
+
+#projects {
+  min-height: 100vh;
+  font-size: 1.4rem;
+  position: relative;
+  background: #f0f0f0;
+  background: linear-gradient(215deg, #f0f0f0 0%,#fafafa 100%);
+  margin-top: -10rem;
+  z-index: 1;
+}
+
+#projects a,
+#projects a:visited {
+  color: #f300b4;
+}
+
+#projects a:hover,
+#projects a:active {
+  color: #903010;
+}
+
+/* Container */
+#projects .projects-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 12rem 5rem 8rem;
+}
+
+/* Heading */
+#projects .heading .title {
+  text-align: center;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+}
+
+#projects .heading .separator {
+  background: #f300b4;
+  width: 150px;
+  height: 2px;
+  margin: 1rem auto;
+}
+
+#projects .heading .subtitle {
+  font-size: 1.4rem;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/* Single Project */
+#projects .project {
+  margin: 1rem auto;
+  width: 70%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 2rem;
+}
+
+/* Project Image */
+#projects .project .project-link {
+  display: block;
+  margin: auto 0;
+  color: #252934;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #fafafa;
+  box-shadow: 0 20px 10px -10px #25293450;
+  transition: 300ms;
+}
+
+#projects .project .project-link:hover {
+  box-shadow: 0 50px 15px -30px #25293450;
+}
+
+#projects .project .project-link:hover > img {
+  filter: saturate(1);
+  transform: scale(1.05);
+}
+
+#projects .project .project-image {
+  width: 100%;
+  transform: scale(1.2);
+  filter: saturate(0);
+  transition: all 300ms;
+}
+
+/* Project Details */
+#projects .project .project-details {
+  margin: auto 0;
+  background-color:white
+}
+
+#projects .project-details .project-tile {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #f300b4;
+}
+
+/* Icons */
+#projects .project-details .icons {
+  margin: 0;
+  color: #252934;
+}
+
+#projects .project-details .icons i {
+  margin-right: .4rem;
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+/* Text */
+#projects .project-details small {
+  font-style: italic;
+}
+
+#projects .project-details p {
+  margin: 1rem 0;
+}
+
+/* Buttons */
+#projects .project-details .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#projects .project-details .buttons a {
+  width: 49%;
+  padding: .5rem;
+  border: none;
+  border-bottom: 1px solid #f300b4;
+  color: #252934;
+  background: #fafafa;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+#projects .project-details .buttons a:hover {
+  background: #f300b4;
+  color: #fafafa;
+}
+#projects .project-details .buttons i {
+  font-size: .8rem;
+  vertical-align: middle;
+  margin-left: .5rem;;
+}
+
+
+@media only screen and (max-width: 1149px) {
+  #projects .project {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media only screen and (max-width: 949px) {
+  #projects .project {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 649px) {
+  #projects {
+    background: #f0f0f0;
+  }
+  #projects .projects-container {
+    padding: 12rem 0 8rem;
+  }
+  #projects .project {
+    padding: 2rem 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+   CONTACT STYLES
+ *****************
+ *****************/
+
+#contact {
+  background: #181d23 url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/envelope.svg?sanitize=true) no-repeat right;
+  -webkit-clip-path: polygon(0 0, 20% 100px, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 20% 100px, 100% 0, 100% 100%, 0 100%);
+  color: #fafafa;
+  min-height: 100vh;
+  width: 100%;
+  padding: 5rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: -100px 0 140px;
+  z-index: 1;
+}
+
+#contact .container {
+  width: 70%;
+  max-width: 1200px;
+  padding: 25vh 0;
+}
+
+#contact .container .heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+#contact .heading-wrapper .social a {
+  color: #fafafa;
+}
+
+#contact .heading-wrapper .social a:hover {
+  color: #f300b4;
+}
+
+.heading-wrapper .heading .title {
+  font-size: 3rem;
+  line-height: 2.4rem;
+}
+
+.heading-wrapper .heading .separator {
+  background: #f300b4;
+  width: 150px;
+  height: 2px;
+  margin: 1rem 0;
+}
+
+.heading-wrapper .heading .subtitle {
+  font-size: 1.4rem;
+}
+
+#contact-form {
+  margin-top: 1rem;
+}
+
+input, textarea {
+  border: none;
+  padding: 1rem;
+  font-family: 'Overlock', Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 40%;
+  transition: 200ms;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="text"]:not(output):not(:focus),
+input[type="email"]:not(output):not(:focus),
+textarea {
+  border-bottom: 1px solid #fafafa;
+  background: transparent;
+  color: #fafafa;
+  font-size: 1.8rem;
+  box-shadow: none;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="text"]:not(output):focus,
+input[type="email"]:not(output):focus,
+textarea:focus {
+  border-bottom: 1px solid #f300b4;
+}
+
+input[type="submit"] {
+  background: #f300b4;
+  color: #fafafa;
+  margin-top: 1rem;
+  width: auto;
+  float: right;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  cursor: pointer;
+  color: #333;
+  background: #fafafa;
+}
+
+::-moz-placeholder {
+  color: #fafafa;
+}
+
+:-ms-input-placeholder {
+  color: #fafafa;
+}
+
+::placeholder {
+  color: #fafafa;
+}
+
+/** Email to avoid spam **/
+.mail {
+  display: inline-block;
+  font-style: italic;
+}
+
+.mail .at, .mail .dot {
+  font-size: .9rem;
+  margin: 0 .1rem;
+  color: #f300b4;
+}
+
+
+@media only screen and (max-width: 1149px) {
+  #contact .social a {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 649px) {
+  #contact {
+    -webkit-clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 0 100%);
+    padding: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/*****************
+ *****************
+   FOOTER STYLES
+ *****************
+ *****************/
+
+footer {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: #fafafa;
+  z-index: 0;
+}
+
+footer .wrapper {
+  display: flex;
+  width: 100%;
+  padding: 2rem;
+  max-width: 1400px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 649px) {
+  footer .wrapper {
+    flex-direction: column;
+  }
+
+  footer .wrapper h3 {
+    padding-bottom: .8rem;
+  }
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+ 
+  </style></head>
+
+<body data-new-gr-c-s-check-loaded="14.1072.0" data-gr-ext-installed="">
+  
+<div id="app">
+    <div class="menu-container">
+        <div class="overlay"></div>
+        <div class="menu-items"><ul>
+        <div class="social">
+            <a href="https://twitter.com/SvenCORNERGUYS" target="blank" rel="noopener noreferrer" title="Link to author's Twitter profile"> <i class="fab fa-twitter"></i></a>
+            <a id="profile-link" href="https://github.com/iamsven2005" target="blank" rel="noopener noreferrer" title="Link to author's GitHub Profile"> <i class="fab fa-github"></i></a>
+            <a href="https://codepen.io/iamsven" target="blank" rel="noopener noreferrer" title="Link to author's Codepen Profile"> <i class="fab fa-codepen"></i></a></div></div></div>
+            <nav id="navbar"><div class="nav-wrapper"><p class="brand">TAN &nbsp<strong>SVEN</strong></p></div></nav>
+                <header id="welcome-section" style="visibility: visible;">
+                    <div class="forest" style="bottom: -300px;"></div>
+                    <div class="silhouette" style="bottom: 0px;"></div>
+                    <div class="moon"></div>
+                    <div class="container"><h1><span class="line">I do</span>
+                        <span class="line">graphic design</span><span class="line"><span class="color">&amp;</span> code.</span></h1>
+                        <div class="buttons"><a href="#projects">my portfolio</a><a href="#contact" class="cta">get in touch</a></div></div></header>
+                        <section id="about"><div class="wrapper"><article><div class="title">
+                            <h3>Who's this guy?</h3><p class="separator"></p></div><div class="desc full">
+                                <h4 class="subtitle">My name is Sven.</h4>
+                                <p>I am a student based in NYP</p>
+                                </div></article></div></section>
+                                    <section id="projects"><div class="projects-container"><div class="heading"><h3 class="title">My Works</h3>
+                                    <p class="separator"></p>
+                                    <p class="subtitle">Here's a list of <u>most</u> of the projects I've been working on lately. All of these were built during my coding camp adventure on <a href="https://www.freecodecamp.org/" target="blank" rel="noopener noreferrer">freeCodeCamp</a>, where I've been coding for almost 7 months non-stop until I completed all the projects required to get my Full-Stack Developer certification.</p></div>
+                                   
+                                    <br><br><br><br>
+                                    <style>
+                                                
+                                        .slider {
+                                          width: 100%;
+                                          height: 100vh;
+                                          position: relative;
+                                          text-transform: uppercase !important;
+                                        }
+                                        
+                                        @media screen and (min-width: 53em) {
+                                          .slider {
+                                              height: 100vh;
+                                          }
+                                        }
+                                        
+                                        .rgbKineticSlider {
+                                          display: block;
+                                          position: relative;
+                                          overflow: hidden;
+                                          width: 100%;
+                                          height: 100%;
+                                        }
+                                        
+                                        canvas {
+                                          position: absolute;
+                                          display: block;
+                                          top: 0;
+                                          left: 0;
+                                        }
+                                        
+                                        .nav a {
+                                          text-decoration: none;
+                                          position: absolute;
+                                          top: 46vh;
+                                          z-index: 1;
+                                          padding: 20px;
+                                          transition: 0.3s;
+                                          background: white;
+                                          color: white;
+                                        }
+                                        
+                                        .nav a.next {
+                                          right: 10vw;
+                                        }
+                                        
+                                        .nav a.prev {
+                                          left: 10vw;
+                                        }
+                                        
+                                        @media screen and (max-width: 53em) {
+                                          .nav a {
+                                              top: auto;
+                                              bottom: 3rem;
+                                          }
+                                        }
+                                        </style>
+                                        
+                                          <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script>
+                                          window.console = window.console || function(t) {};
+                                        </script>
+                                        
+                                          
+                                          
+                                          <script>
+                                          if (document.location.search.match(/type=embed/gi)) {
+                                            window.parent.postMessage("resize", "*");
+                                          }
+                                        </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400" media="all">
+                                        <main>
+                                                    <div class="slider">
+                                                        <div id="rgbKineticSlider" class="rgbKineticSlider"><canvas width="1920" height="1080" style="touch-action: none; cursor: inherit; object-fit: cover; width: 100%; height: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.15);"></canvas></div>
+                                                        <div class="nav">
+                                                            <a href="#" class="main-nav prev" data-nav="previous">Prev <span></span></a>
+                                                            <a href="#" class="main-nav next" data-nav="next">Next <span></span></a>
+                                                        </div>
+                                                    </div>
+                                                </main>
+                                        
+                                                <!-- TweenMax -->
+                                                <script src="https://cdn.jsdelivr.net/gh/hmongouachon/rgbKineticSlider/js/libs/TweenMax.min.js"></script>
+                                                <script src="https://cdn.jsdelivr.net/gh/hmongouachon/rgbKineticSlider/js/libs/imagesLoaded.pkgd.min.js"></script>
+                                        
+                                                <!-- Pixi JS -->
+                                                <script src="https://cdn.jsdelivr.net/gh/hmongouachon/rgbKineticSlider/js/libs/pixi.min.js"></script>
+                                                <script src="https://cdn.jsdelivr.net/gh/hmongouachon/rgbKineticSlider/js/libs/pixi-filters.min.js"></script>
+                                        
+                                                <!-- Slider Plugin -->
+                                                <script src="https://cdn.jsdelivr.net/gh/hmongouachon/rgbKineticSlider/js/rgbKineticSlider.js"></script>
+                                              <script id="rendered-js">
+                                        const images = [
+                                        "data:image/png;base64,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", 
+                                        "data:image/png;base64,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", 
+                                        "data:image/jpeg;base64,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", 
+                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqlOo66Hbp2GG39w9DC4MaTW2WC50NoTgN_A&usqp=CAU", 
+                                        "data:image/png;base64,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"];
+                                        const texts = [["BASICS"], ["RUST"], ["FLASK,DJANGO, MYSQL"], ["STYLING + BS5"], [" REACT + FIREBASE"]];
+                                        
+                                        rgbKineticSlider = new rgbKineticSlider({
+                                          slideImages: images,
+                                          itemsTitles: texts,
+                                        
+                                          backgroundDisplacementSprite:
+                                          images,
+                                          cursorDisplacementSprite:
+                                          images,
+                                          cursorScaleIntensity: 0.6,
+                                          cursorMomentum: 0.14,
+                                        
+                                          swipe: true,
+                                          swipeDistance: window.innerWidth * 0.4,
+                                          swipeScaleIntensity: 2,
+                                        
+                                          slideTransitionDuration: 0.8,
+                                          transitionScaleIntensity: 30,
+                                          transitionScaleAmplitude: 160,
+                                        
+                                          nav: true,
+                                          navElement: ".main-nav",
+                                        
+                                          imagesRgbEffect: false,
+                                          imagesRgbIntensity: 4,
+                                          navImagesRgbIntensity: 120,
+                                        
+                                          textsDisplay: true,
+                                          textTitleSize: 144,
+                                          textsTiltEffect: true,
+                                          googleFonts: ["Playfair Display:400"],
+                                          textsRgbEffect: true,
+                                          textsRgbIntensity: 1 });
+                                        //# sourceURL=pen.js
+                                            </script>
+
+                                    <div class="projects-wrapper">
+                                    <div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/OJvvZNx/" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/BarChart.jpg" alt="Screenshot of Bar Chart."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="far fa-chart-bar"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Bar Chart. </div>
+                                        <small>Built using CSS, JS and D3.js.</small>
+                                        <p>A bar chart representing the evolution of the US GDP.</p><div class="buttons">
+<a href="https://codepen.io/iamsven/pen/OJvvZNx/" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/WNzzJrJ" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/TreemapDiagram.jpg" alt="Screenshot of Treemap Diagram."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="far fa-chart-bar"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Treemap Diagram. </div>
+                                        <small>Built using CSS, JS and D3.js.</small>
+                                        <p>A treemap diagram representing groups of pledges and sales from a particular category.</p>
+                                        <div class="buttons">
+<a href="https://codepen.io/iamsven/pen/WNzzJrJ" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/abYYGdo" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/ChoroplethMap.jpg" alt="Screenshot of Choropleth Map."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="far fa-chart-bar"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Choropleth Map. </div>
+                                        <small>Built using CSS, JS and D3.js.</small>
+                                        <p>A choropleth map representing the educational attainment by county in the U.S.</p>
+                                        <div class="buttons">
+ <a href="https://codepen.io/iamsven/pen/abYYGdo" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/KKooRKB" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/Calculator.jpg" alt="Screenshot of Calculator."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-react"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Calculator. </div>
+                                        <small>Built using React and CSS.</small>
+                                        <p>A project on which I built a virtual calculator with its usual features.</p><div class="buttons">
+                                            <a href="https://codepen.io/iamsven/pen/KKooRKB" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/VwXXXoe" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/TomateTimer.jpg" alt="Screenshot of Pomodoro Timer."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-react"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Pomodoro Timer. </div>
+                                        <small>Built using React, CSS and lots of SVG.</small>
+                                        <p>A cute and animated Pomodoro clock to help the users improve their productivity.</p><div class="buttons">
+ <a href="https://codepen.io/iamsven/pen/VwXXXoe" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/jOzzaVw" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/TicTacToe.jpg" alt="Screenshot of TicTacToe Game."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i><i class="fab fa-react"></i>
+                                            <i class="fab fa-css3-alt"></i></p>TicTacToe Game. </div>
+                                        <small>Built using React, CSS and SVG.</small>
+                                        <p>A TicTacToe game with a basic AI algorithm made for the legacy front-end projects on FreeCodeCamp.</p><div class="buttons">
+                                             <a href="https://codepen.io/iamsven/pen/jOzzaVw" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/VwXXrKJ" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/Twitch.jpg" alt="Screenshot of Twitch Clone."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-vuejs"></i>
+                                            <i class="fab fa-sass"></i></p>Twitch Clone. </div>
+                                        <small>Built using VueJS, Axios and Scss.</small>
+                                        <p>Simple Twitch clone using the new Twitch Helix API and made for the legacy front-end projects on FreeCodeCamp.</p><div class="buttons">
+ <a href="https://codepen.io/iamsven/pen/VwXXrKJ" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/abYYVzj" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/WeatherApp.jpg" alt="Screenshot of Weather App."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-vuejs"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Weather App. </div>
+                                        <small>Built using VueJS, Axios and CSS.</small>
+                                        <p>App that present the users with the current local weather for their location.</p><div class="buttons"> <a href="https://codepen.io/iamsven/pen/abYYVzj" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/abYYVzj" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/Tribute.jpg" alt="Screenshot of Tribute."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-sass"></i></p>Tribute. </div>
+                                        <small>Built using vanilla Javascript and Scss.</small>
+                                        <p>Tribute page to Aaron Swartz, a static website built with SCSS and plain Javascript.</p><div class="buttons"><a href="https://codepen.io/iamsven/pen/ZExxaEX" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/ZExxaEX" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/SurveyForm.jpg" alt="Screenshot of Survey Form."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-sass"></i></p>Survey Form. </div>
+                                        <small>Built using vanilla Javascript and Scss.</small>
+                                        <p>An animated survey form.</p><div class="buttons">
+<a href="https://codepen.io/iamsven/pen/PoRROPq" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/PoRROPq" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/LandingPage.jpg" alt="Screenshot of Landing Page Example."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-sass"></i></p>Landing Page Example. </div>
+                                        <small>Built using vanilla Javascript and Scss.</small>
+                                        <p>A landing page for the Pomodoro Timer I made (shown previously in this section).</p><div class="buttons">
+                                        <a href="https://codepen.io/iamsven/pen/NWYYwxR" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div><div class="project">
+                                            <a class="project-link" href="https://codepen.io/iamsven/pen/oNqqoxV" target="blank" rel="noopener noreferrer"><img class="project-image" src="https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/Documentify.jpg" alt="Screenshot of Technical Documentation Page."></a>
+                                        <div class="project-details"><div class="project-tile"><p class="icons">
+                                            <i class="fab fa-js-square"></i>
+                                            <i class="fab fa-react"></i>
+                                            <i class="fab fa-css3-alt"></i></p>Technical Documentation Page. </div>
+                                        <small>Built using React and CSS.</small>
+                                        <p>A technical documentation page made for a little React library I published on NPM.</p><div class="buttons">
+                                            <a href="https://codepen.io/iamsven/pen/oNqqoxV" target="blank" rel="noopener noreferrer">Try it Live <i class="fas fa-external-link-alt"></i></a></div></div></div>
+                                        
+                                            <div class="intro-section">
+                                                <div class="containers">
+                                                  <div class="grid">
+                                                    <div class="column-xs-12">
+                                                      <ul class="slider">
+                                                        <li class="slider-item active">
+                                                          <div class="grid vertical">
+                                                            <div class="column-xs-12 column-md-2 hide-mobile">
+                                                              <div class="intro">
+                                                                <a href="https://youtu.be/DIhq2iQcvf4">
+                                                                  <h1 class="title"><span class="underline">ROBOTICS</span></h1>
+                                                                </a>
+                                                              </div>
+                                                            </div>
+                                                            <div class="column-xs-12 column-md-10">
+                                                              <div class="image-holder">
+                                                                <img src="https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cm9ib3RpY3N8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60">
+                                                              </div>
+                                                              <div class="grid">
+                                                                <div class="column-xs-12 column-md-9">
+                                                                  <div class="intro show-mobile">
+                                                                    <a href="https://youtu.be/DIhq2iQcvf4">
+                                                                      <h1 class="title"><span class="underline">ROBOTICS</span></h1>
+                                                                    </a>
+                                                                  </div>
+                                                                  <p class="description">I have worked with lego mindstorms for about 10 years.</p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </li>
+                                                        <li class="slider-item">
+                                                          <div class="grid vertical">
+                                                            <div class="column-xs-12 column-md-2 hide-mobile">
+                                                              <div class="intro">
+                                                                <a href="https://www.youtube.com/watch?v=tbwLUjOJFSk">
+                                                                  <h1 class="title"><span class="underline">WEB DEV</span></h1>
+                                                                </a>
+                                                              </div>
+                                                            </div>
+                                                            <div class="column-xs-12 column-md-10">
+                                                              <div class="image-holder">
+                                                                <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d2ViJTIwZGV2fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60">
+                                                              </div>
+                                                              <div class="grid">
+                                                                <div class="column-xs-12 column-md-9">
+                                                                  <div class="intro show-mobile">
+                                                                    <a href="https://www.youtube.com/watch?v=tbwLUjOJFSk">
+                                                                      <h1 class="title"><span class="underline">WEB DEV</span></h1>
+                                                                    </a>
+                                                                  </div>
+                                                                  <p class="description">I have participated in multiple hackathons with full stack experience and knowlegde in using website creators. Click to find out my review of FFANG websites</p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </li>
+                                                        <li class="slider-item">
+                                                          <div class="grid vertical">
+                                                            <div class="column-xs-12 column-md-2 hide-mobile">
+                                                              <div class="intro">
+                                                                <a href="https://youtu.be/0w5S95GxHBo">
+                                                                   <h1 class="title"><span class="underline">Cybersecurity</span></h1>
+                                                                </a>
+                                                              </div>
+                                                            </div>
+                                                            <div class="column-xs-12 column-md-10">
+                                                              <div class="image-holder">
+                                                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y3liZXIlMjBzZWN1cml0eXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60">
+                                                              </div>
+                                                              <div class="grid">
+                                                                <div class="column-xs-12 column-md-9">
+                                                                  <div class="intro show-mobile">
+                                                                    <a href="https://youtu.be/0w5S95GxHBo">
+                                                                      <h1 class="title"><span class="underline">Cybersecurity</span></h1>
+                                                                    </a>
+                                                                  </div>
+                                                                  <p class="description">Participated in some CTFs and studying infocomm and security in Nanyang Polytechnic. Here is my video project for poly.</p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </li>
+                                                        <li class="slider-item">
+                                                          <div class="grid vertical">
+                                                            <div class="column-xs-12 column-md-2 hide-mobile">
+                                                              <div class="intro">
+                                                                <a href="https://cornerguys05.wixsite.com/hello">
+                                                                  <h1 class="title"><span class="underline">External</span></h1>
+                                                                </a>
+                                                              </div>
+                                                            </div>
+                                                            <div class="column-xs-12 column-md-10">
+                                                              <div class="image-holder">
+                                                                <img src="https://images.unsplash.com/photo-1580086319619-3ed498161c77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTF8fGZpdG5lc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60">
+                                                              </div>
+                                                              <div class="grid">
+                                                                <div class="column-xs-12 column-md-9">
+                                                                  <div class="intro show-mobile">
+                                                                    <a href="https://cornerguys05.wixsite.com/hello">
+                                                                      <h1 class="title"><span class="underline">External</span></h1>
+                                                                    </a>
+                                                                  </div>
+                                                                  <p class="description">I have cool expirences that I do outside of school like this project where I rate fitness corners in Singapore.</p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </li>
+                                                      </ul>
+                                                    <div class="grid">
+                                                      <div class="column-xs-12">
+                                                        <div class="controls">
+                                                            <button class="previous button">
+                                                              <span class="visually-hidden">Prev</span>
+                                                              <span class="icon arrow-left" aria-hidden="true"></span>
+                                                            </button>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                              <style>
+                                                @import url("https://fonts.googleapis.com/css?family=Barlow:400,500,700");
+                                            .containers {
+                                              margin: auto;
+                                              padding: 0 1rem;
+                                              max-width: 71.25rem;
+                                              width: 100%;
+                                            }
+                                            
+                                            .grid {
+                                              display: flex;
+                                              flex-direction: column;
+                                              flex-flow: row wrap;
+                                            }
+                                            .grid > [class*=column-] {
+                                              display: block;
+                                            }
+                                            
+                                            .first {
+                                              order: -1;
+                                            }
+                                            
+                                            .last {
+                                              order: 12;
+                                            }
+                                            
+                                            .align-top {
+                                              align-items: start;
+                                            }
+                                            
+                                            .align-center {
+                                              align-items: center;
+                                            }
+                                            
+                                            .align-bottom {
+                                              align-items: end;
+                                            }
+                                            
+                                            .column-xs-1 {
+                                              flex-basis: 8.3333333333%;
+                                              max-width: 8.3333333333%;
+                                            }
+                                            
+                                            .column-xs-2 {
+                                              flex-basis: 16.6666666667%;
+                                              max-width: 16.6666666667%;
+                                            }
+                                            
+                                            .column-xs-3 {
+                                              flex-basis: 25%;
+                                              max-width: 25%;
+                                            }
+                                            
+                                            .column-xs-4 {
+                                              flex-basis: 33.3333333333%;
+                                              max-width: 33.3333333333%;
+                                            }
+                                            
+                                            .column-xs-5 {
+                                              flex-basis: 41.6666666667%;
+                                              max-width: 41.6666666667%;
+                                            }
+                                            
+                                            .column-xs-6 {
+                                              flex-basis: 50%;
+                                              max-width: 50%;
+                                            }
+                                            
+                                            .column-xs-7 {
+                                              flex-basis: 58.3333333333%;
+                                              max-width: 58.3333333333%;
+                                            }
+                                            
+                                            .column-xs-8 {
+                                              flex-basis: 66.6666666667%;
+                                              max-width: 66.6666666667%;
+                                            }
+                                            
+                                            .column-xs-9 {
+                                              flex-basis: 75%;
+                                              max-width: 75%;
+                                            }
+                                            
+                                            .column-xs-10 {
+                                              flex-basis: 83.3333333333%;
+                                              max-width: 83.3333333333%;
+                                            }
+                                            
+                                            .column-xs-11 {
+                                              flex-basis: 91.6666666667%;
+                                              max-width: 91.6666666667%;
+                                            }
+                                            
+                                            .column-xs-12 {
+                                              flex-basis: 100%;
+                                              max-width: 100%;
+                                            }
+                                            
+                                            @media (min-width: 48rem) {
+                                              .column-sm-1 {
+                                                flex-basis: 8.3333333333%;
+                                                max-width: 8.3333333333%;
+                                              }
+                                            
+                                              .column-sm-2 {
+                                                flex-basis: 16.6666666667%;
+                                                max-width: 16.6666666667%;
+                                              }
+                                            
+                                              .column-sm-3 {
+                                                flex-basis: 25%;
+                                                max-width: 25%;
+                                              }
+                                            
+                                              .column-sm-4 {
+                                                flex-basis: 33.3333333333%;
+                                                max-width: 33.3333333333%;
+                                              }
+                                            
+                                              .column-sm-5 {
+                                                flex-basis: 41.6666666667%;
+                                                max-width: 41.6666666667%;
+                                              }
+                                            
+                                              .column-sm-6 {
+                                                flex-basis: 50%;
+                                                max-width: 50%;
+                                              }
+                                            
+                                              .column-sm-7 {
+                                                flex-basis: 58.3333333333%;
+                                                max-width: 58.3333333333%;
+                                              }
+                                            
+                                              .column-sm-8 {
+                                                flex-basis: 66.6666666667%;
+                                                max-width: 66.6666666667%;
+                                              }
+                                            
+                                              .column-sm-9 {
+                                                flex-basis: 75%;
+                                                max-width: 75%;
+                                              }
+                                            
+                                              .column-sm-10 {
+                                                flex-basis: 83.3333333333%;
+                                                max-width: 83.3333333333%;
+                                              }
+                                            
+                                              .column-sm-11 {
+                                                flex-basis: 91.6666666667%;
+                                                max-width: 91.6666666667%;
+                                              }
+                                            
+                                              .column-sm-12 {
+                                                flex-basis: 100%;
+                                                max-width: 100%;
+                                              }
+                                            }
+                                            @media (min-width: 62rem) {
+                                              .column-md-1 {
+                                                flex-basis: 8.3333333333%;
+                                                max-width: 8.3333333333%;
+                                              }
+                                            
+                                              .column-md-2 {
+                                                flex-basis: 16.6666666667%;
+                                                max-width: 16.6666666667%;
+                                              }
+                                            
+                                              .column-md-3 {
+                                                flex-basis: 25%;
+                                                max-width: 25%;
+                                              }
+                                            
+                                              .column-md-4 {
+                                                flex-basis: 33.3333333333%;
+                                                max-width: 33.3333333333%;
+                                              }
+                                            
+                                              .column-md-5 {
+                                                flex-basis: 41.6666666667%;
+                                                max-width: 41.6666666667%;
+                                              }
+                                            
+                                              .column-md-6 {
+                                                flex-basis: 50%;
+                                                max-width: 50%;
+                                              }
+                                            
+                                              .column-md-7 {
+                                                flex-basis: 58.3333333333%;
+                                                max-width: 58.3333333333%;
+                                              }
+                                            
+                                              .column-md-8 {
+                                                flex-basis: 66.6666666667%;
+                                                max-width: 66.6666666667%;
+                                              }
+                                            
+                                              .column-md-9 {
+                                                flex-basis: 75%;
+                                                max-width: 75%;
+                                              }
+                                            
+                                              .column-md-10 {
+                                                flex-basis: 83.3333333333%;
+                                                max-width: 83.3333333333%;
+                                              }
+                                            
+                                              .column-md-11 {
+                                                flex-basis: 91.6666666667%;
+                                                max-width: 91.6666666667%;
+                                              }
+                                            
+                                              .column-md-12 {
+                                                flex-basis: 100%;
+                                                max-width: 100%;
+                                              }
+                                            }
+                                            @media (min-width: 75rem) {
+                                              .column-lg-1 {
+                                                flex-basis: 8.3333333333%;
+                                                max-width: 8.3333333333%;
+                                              }
+                                            
+                                              .column-lg-2 {
+                                                flex-basis: 16.6666666667%;
+                                                max-width: 16.6666666667%;
+                                              }
+                                            
+                                              .column-lg-3 {
+                                                flex-basis: 25%;
+                                                max-width: 25%;
+                                              }
+                                            
+                                              .column-lg-4 {
+                                                flex-basis: 33.3333333333%;
+                                                max-width: 33.3333333333%;
+                                              }
+                                            
+                                              .column-lg-5 {
+                                                flex-basis: 41.6666666667%;
+                                                max-width: 41.6666666667%;
+                                              }
+                                            
+                                              .column-lg-6 {
+                                                flex-basis: 50%;
+                                                max-width: 50%;
+                                              }
+                                            
+                                              .column-lg-7 {
+                                                flex-basis: 58.3333333333%;
+                                                max-width: 58.3333333333%;
+                                              }
+                                            
+                                              .column-lg-8 {
+                                                flex-basis: 66.6666666667%;
+                                                max-width: 66.6666666667%;
+                                              }
+                                            
+                                              .column-lg-9 {
+                                                flex-basis: 75%;
+                                                max-width: 75%;
+                                              }
+                                            
+                                              .column-lg-10 {
+                                                flex-basis: 83.3333333333%;
+                                                max-width: 83.3333333333%;
+                                              }
+                                            
+                                              .column-lg-11 {
+                                                flex-basis: 91.6666666667%;
+                                                max-width: 91.6666666667%;
+                                              }
+                                            
+                                              .column-lg-12 {
+                                                flex-basis: 100%;
+                                                max-width: 100%;
+                                              }
+                                            }
+                                            @supports (display: grid) {
+                                              .grid {
+                                                display: grid;
+                                                grid-template-columns: repeat(12, 1fr);
+                                                grid-template-rows: auto;
+                                              }
+                                              .grid > [class*=column-] {
+                                                margin: 0;
+                                                max-width: 100%;
+                                              }
+                                            
+                                              .column-xs-1 {
+                                                grid-column-start: span 1;
+                                                grid-column-end: span 1;
+                                              }
+                                            
+                                              .column-xs-2 {
+                                                grid-column-start: span 2;
+                                                grid-column-end: span 2;
+                                              }
+                                            
+                                              .column-xs-3 {
+                                                grid-column-start: span 3;
+                                                grid-column-end: span 3;
+                                              }
+                                            
+                                              .column-xs-4 {
+                                                grid-column-start: span 4;
+                                                grid-column-end: span 4;
+                                              }
+                                            
+                                              .column-xs-5 {
+                                                grid-column-start: span 5;
+                                                grid-column-end: span 5;
+                                              }
+                                            
+                                              .column-xs-6 {
+                                                grid-column-start: span 6;
+                                                grid-column-end: span 6;
+                                              }
+                                            
+                                              .column-xs-7 {
+                                                grid-column-start: span 7;
+                                                grid-column-end: span 7;
+                                              }
+                                            
+                                              .column-xs-8 {
+                                                grid-column-start: span 8;
+                                                grid-column-end: span 8;
+                                              }
+                                            
+                                              .column-xs-9 {
+                                                grid-column-start: span 9;
+                                                grid-column-end: span 9;
+                                              }
+                                            
+                                              .column-xs-10 {
+                                                grid-column-start: span 10;
+                                                grid-column-end: span 10;
+                                              }
+                                            
+                                              .column-xs-11 {
+                                                grid-column-start: span 11;
+                                                grid-column-end: span 11;
+                                              }
+                                            
+                                              .column-xs-12 {
+                                                grid-column-start: span 12;
+                                                grid-column-end: span 12;
+                                              }
+                                            
+                                              @media (min-width: 48rem) {
+                                                .column-sm-1 {
+                                                  grid-column-start: span 1;
+                                                  grid-column-end: span 1;
+                                                }
+                                            
+                                                .column-sm-2 {
+                                                  grid-column-start: span 2;
+                                                  grid-column-end: span 2;
+                                                }
+                                            
+                                                .column-sm-3 {
+                                                  grid-column-start: span 3;
+                                                  grid-column-end: span 3;
+                                                }
+                                            
+                                                .column-sm-4 {
+                                                  grid-column-start: span 4;
+                                                  grid-column-end: span 4;
+                                                }
+                                            
+                                                .column-sm-5 {
+                                                  grid-column-start: span 5;
+                                                  grid-column-end: span 5;
+                                                }
+                                            
+                                                .column-sm-6 {
+                                                  grid-column-start: span 6;
+                                                  grid-column-end: span 6;
+                                                }
+                                            
+                                                .column-sm-7 {
+                                                  grid-column-start: span 7;
+                                                  grid-column-end: span 7;
+                                                }
+                                            
+                                                .column-sm-8 {
+                                                  grid-column-start: span 8;
+                                                  grid-column-end: span 8;
+                                                }
+                                            
+                                                .column-sm-9 {
+                                                  grid-column-start: span 9;
+                                                  grid-column-end: span 9;
+                                                }
+                                            
+                                                .column-sm-10 {
+                                                  grid-column-start: span 10;
+                                                  grid-column-end: span 10;
+                                                }
+                                            
+                                                .column-sm-11 {
+                                                  grid-column-start: span 11;
+                                                  grid-column-end: span 11;
+                                                }
+                                            
+                                                .column-sm-12 {
+                                                  grid-column-start: span 12;
+                                                  grid-column-end: span 12;
+                                                }
+                                              }
+                                              @media (min-width: 62rem) {
+                                                .column-md-1 {
+                                                  grid-column-start: span 1;
+                                                  grid-column-end: span 1;
+                                                }
+                                            
+                                                .column-md-2 {
+                                                  grid-column-start: span 2;
+                                                  grid-column-end: span 2;
+                                                }
+                                            
+                                                .column-md-3 {
+                                                  grid-column-start: span 3;
+                                                  grid-column-end: span 3;
+                                                }
+                                            
+                                                .column-md-4 {
+                                                  grid-column-start: span 4;
+                                                  grid-column-end: span 4;
+                                                }
+                                            
+                                                .column-md-5 {
+                                                  grid-column-start: span 5;
+                                                  grid-column-end: span 5;
+                                                }
+                                            
+                                                .column-md-6 {
+                                                  grid-column-start: span 6;
+                                                  grid-column-end: span 6;
+                                                }
+                                            
+                                                .column-md-7 {
+                                                  grid-column-start: span 7;
+                                                  grid-column-end: span 7;
+                                                }
+                                            
+                                                .column-md-8 {
+                                                  grid-column-start: span 8;
+                                                  grid-column-end: span 8;
+                                                }
+                                            
+                                                .column-md-9 {
+                                                  grid-column-start: span 9;
+                                                  grid-column-end: span 9;
+                                                }
+                                            
+                                                .column-md-10 {
+                                                  grid-column-start: span 10;
+                                                  grid-column-end: span 10;
+                                                }
+                                            
+                                                .column-md-11 {
+                                                  grid-column-start: span 11;
+                                                  grid-column-end: span 11;
+                                                }
+                                            
+                                                .column-md-12 {
+                                                  grid-column-start: span 12;
+                                                  grid-column-end: span 12;
+                                                }
+                                              }
+                                              @media (min-width: 75rem) {
+                                                .column-lg-1 {
+                                                  grid-column-start: span 1;
+                                                  grid-column-end: span 1;
+                                                }
+                                            
+                                                .column-lg-2 {
+                                                  grid-column-start: span 2;
+                                                  grid-column-end: span 2;
+                                                }
+                                            
+                                                .column-lg-3 {
+                                                  grid-column-start: span 3;
+                                                  grid-column-end: span 3;
+                                                }
+                                            
+                                                .column-lg-4 {
+                                                  grid-column-start: span 4;
+                                                  grid-column-end: span 4;
+                                                }
+                                            
+                                                .column-lg-5 {
+                                                  grid-column-start: span 5;
+                                                  grid-column-end: span 5;
+                                                }
+                                            
+                                                .column-lg-6 {
+                                                  grid-column-start: span 6;
+                                                  grid-column-end: span 6;
+                                                }
+                                            
+                                                .column-lg-7 {
+                                                  grid-column-start: span 7;
+                                                  grid-column-end: span 7;
+                                                }
+                                            
+                                                .column-lg-8 {
+                                                  grid-column-start: span 8;
+                                                  grid-column-end: span 8;
+                                                }
+                                            
+                                                .column-lg-9 {
+                                                  grid-column-start: span 9;
+                                                  grid-column-end: span 9;
+                                                }
+                                            
+                                                .column-lg-10 {
+                                                  grid-column-start: span 10;
+                                                  grid-column-end: span 10;
+                                                }
+                                            
+                                                .column-lg-11 {
+                                                  grid-column-start: span 11;
+                                                  grid-column-end: span 11;
+                                                }
+                                            
+                                                .column-lg-12 {
+                                                  grid-column-start: span 12;
+                                                  grid-column-end: span 12;
+                                                }
+                                              }
+                                            }
+                                            * {
+                                              box-sizing: border-box;
+                                            }
+                                            *::before, *::after {
+                                              box-sizing: border-box;
+                                            }
+                                            
+                                            body {
+                                              font-family: "Barlow", sans-serif;
+                                              font-size: 1.125rem;
+                                              font-weight: 400;
+                                              line-height: 1.6;
+                                              color: #8d8d8d;
+                                              background: #fff;
+                                              text-rendering: optimizeLegibility;
+                                              overflow-x: hidden;
+                                            }
+                                            
+                                            a {
+                                              color: #8d8d8d;
+                                              text-decoration: none;
+                                            }
+                                            a:hover {
+                                              color: #232323;
+                                            }
+                                            
+                                            #logo {
+                                              color: #232323;
+                                              font-weight: 700;
+                                              font-size: 1.125rem;
+                                            }
+                                            
+                                            #highlight {
+                                              color: #e83f43;
+                                            }
+                                            
+                                            img {
+                                              width: 100%;
+                                              height: 43vh;
+                                              object-fit: cover;
+                                            }
+                                            
+                                            .vertical {
+                                              flex-direction: column;
+                                              justify-content: center;
+                                              align-items: center;
+                                            }
+                                            
+                                            .intro {
+                                              position: relative;
+                                              z-index: 2;
+                                              opacity: 0;
+                                              animation: fadeIn 0.8s 0.4s ease forwards;
+                                            }
+                                            .intro .title {
+                                              display: inline-block;
+                                              font-size: 2rem;
+                                              font-weight: 500;
+                                              line-height: 1.1;
+                                              text-decoration: underline;
+                                              color: #e83f43;
+                                            }
+                                            .intro .title .underline {
+                                              color: #232323;
+                                            }
+                                            
+                                            .description {
+                                              position: relative;
+                                              z-index: 1;
+                                              margin: 1rem 0 1.5rem 0;
+                                              font-size: 1rem;
+                                              opacity: 0;
+                                              animation: fadeIn 0.8s 0.6s ease forwards;
+                                            }
+                                            
+                                            .slider-item {
+                                              display: none;
+                                            }
+                                            .slider-item.active {
+                                              display: block;
+                                            }
+                                            .slider-item.active .hide-mobile {
+                                              display: none;
+                                            }
+                                            .slider-item.active .show-mobile {
+                                              display: block;
+                                              margin: 1rem 0;
+                                            }
+                                            
+                                            .button {
+                                              position: relative;
+                                              display: inline-block;
+                                              cursor: pointer;
+                                              outline: none;
+                                              border: 0;
+                                              vertical-align: middle;
+                                              text-decoration: none;
+                                              background: transparent;
+                                              margin: 0;
+                                              padding: 0;
+                                              font-size: 100%;
+                                              font: inherit;
+                                              font-size: inherit;
+                                              width: 55px;
+                                              height: 55px;
+                                            }
+                                            
+                                            .controls {
+                                              position: relative;
+                                              z-index: 1;
+                                              display: flex;
+                                              justify-content: flex-end;
+                                              padding: 0.25rem 0 0.25rem 0;
+                                            }
+                                            .controls .previous {
+                                              border: 1px solid #232323;
+                                            }
+                                            .controls .next {
+                                              border-top: 1px solid #232323;
+                                              border-right: 1px solid #232323;
+                                              border-bottom: 1px solid #232323;
+                                            }
+                                            .controls .icon {
+                                              position: relative;
+                                              margin: auto;
+                                              width: 20px;
+                                              height: 1px;
+                                              background-color: currentColor;
+                                            }
+                                            .controls .icon.arrow-left::before {
+                                              content: "";
+                                              position: absolute;
+                                              left: 1px;
+                                              top: -4px;
+                                              width: 9px;
+                                              height: 9px;
+                                              border-top: solid 1px currentColor;
+                                              border-right: solid 1px currentColor;
+                                              transform: rotate(-135deg);
+                                            }
+                                            .controls .icon.arrow-right::before {
+                                              content: "";
+                                              position: absolute;
+                                              right: 1px;
+                                              top: -4px;
+                                              width: 9px;
+                                              height: 9px;
+                                              border-top: solid 1px currentColor;
+                                              border-right: solid 1px currentColor;
+                                              transform: rotate(45deg);
+                                            }
+                                            
+                                            .previous, .next {
+                                              display: flex;
+                                              align-content: center;
+                                              justify-content: center;
+                                              flex-basis: 15%;
+                                              font-size: 2rem;
+                                              color: #232323;
+                                            }
+                                            .previous:hover .icon, .next:hover .icon {
+                                              transform: scale(1.5);
+                                            }
+                                            .previous .icon, .next .icon {
+                                              transition: transform 0.1s ease;
+                                            }
+                                            
+                                            .active .image-holder::before {
+                                              position: absolute;
+                                              content: "";
+                                              z-index: 1;
+                                              display: block;
+                                              top: 0;
+                                              left: 0;
+                                              width: 100%;
+                                              height: 100%;
+                                              background: #fff;
+                                              transform-origin: 100% 50%;
+                                              animation: revealRight 1s cubic-bezier(0.23, 1, 0.75, 1) forwards;
+                                            }
+                                            
+                                            @keyframes revealRight {
+                                              0% {
+                                                transform: scaleX(1);
+                                              }
+                                              100% {
+                                                transform: scaleX(0);
+                                              }
+                                            }
+                                            @keyframes fadeIn {
+                                              0% {
+                                                opacity: 0;
+                                              }
+                                              100% {
+                                                opacity: 1;
+                                              }
+                                            }
+                                            @keyframes fadeInLeft {
+                                              0% {
+                                                opacity: 0;
+                                                transform: translateX(20%);
+                                              }
+                                              100% {
+                                                opacity: 1;
+                                                transform: translate(0);
+                                              }
+                                            }
+                                            .toggle-nav {
+                                              display: flex;
+                                              justify-content: flex-end;
+                                              font-size: 1rem;
+                                              line-height: 1.9;
+                                            }
+                                            .toggle-nav i {
+                                              font-size: 1.5rem;
+                                              line-height: 1.3;
+                                              margin: 0 0 0 0.5rem;
+                                            }
+                                            
+                                            .flex-nav ul {
+                                              position: absolute;
+                                              z-index: 1;
+                                              list-style: none;
+                                              margin: 0;
+                                              padding: 0;
+                                              display: flex;
+                                              flex-wrap: wrap;
+                                              flex-direction: column;
+                                              display: none;
+                                              width: 100%;
+                                              left: 0;
+                                              padding: 1rem;
+                                              background: #fff;
+                                              text-align: center;
+                                            }
+                                            .flex-nav ul.active {
+                                              display: flex;
+                                            }
+                                            
+                                            @media (min-width: 62rem) {
+                                             
+                                            
+                                              #logo {
+                                                font-size: 1.25rem;
+                                              }
+                                            
+                                              .controls {
+                                                padding: 1.75rem 0 1.75rem 0;
+                                              }
+                                            
+                                              .intro {
+                                                animation: fadeInLeft 0.8s 0.4s ease forwards;
+                                              }
+                                              .intro .title {
+                                                font-size: 4.25rem;
+                                                padding: 2.5rem 2.5rem 3rem 2.5rem;
+                                                background: #fff;
+                                              }
+                                            
+                                              img {
+                                                height: 60vh;
+                                              }
+                                            
+                                              .description {
+                                                font-size: 1.25rem;
+                                                margin: 1rem 0 0 0;
+                                              }
+                                            
+                                              .previous, .next {
+                                                flex-basis: 8.33%;
+                                              }
+                                            
+                                              .slider-item.active .hide-mobile {
+                                                display: block;
+                                              }
+                                            
+                                              .slider-item.active .show-mobile {
+                                                display: none;
+                                              }
+                                            
+                                              .toggle-nav {
+                                                display: none;
+                                              }
+                                            
+                                              .flex-nav ul {
+                                                display: flex;
+                                                flex-direction: row;
+                                                position: relative;
+                                                padding: 0;
+                                                justify-content: flex-end;
+                                              }
+                                            
+                                              
+                                            }
+                                            .visually-hidden {
+                                              clip: rect(0 0 0 0);
+                                              clip-path: inset(50%);
+                                              height: 1px;
+                                              overflow: hidden;
+                                              position: absolute;
+                                              white-space: nowrap;
+                                              width: 1px;
+                                            }
+                                              </style>
+                                              <script>
+                                                const items = document.querySelectorAll('.slider-item');
+                                            const itemCount = items.length;
+                                            const nextItem = document.querySelector('.next');
+                                            const previousItem = document.querySelector('.previous');
+                                            const navItem = document.querySelector('a.toggle-nav');
+                                            let count = 0;
+                                            
+                                            function showNextItem() {
+                                              items[count].classList.remove('active');
+                                            
+                                              if(count < itemCount - 1) {
+                                                count++;
+                                              } else {
+                                                count = 0;
+                                              }
+                                            
+                                              items[count].classList.add('active');
+                                              console.log(count);
+                                            }
+                                            
+                                            function showPreviousItem() {
+                                              items[count].classList.remove('active');
+                                            
+                                              if(count > 0) {
+                                                count--;
+                                              } else {
+                                                count = itemCount - 1;
+                                              }
+                                            
+                                              items[count].classList.add('active');
+                                              // Check if working...
+                                              console.log(count);
+                                            }
+                                            
+                                            function toggleNavigation(){
+                                              this.nextElementSibling.classList.toggle('active');
+                                            }
+                                            
+                                            function keyPress(e) {
+                                              e = e || window.event;
+                                              
+                                              if (e.keyCode == '37') {
+                                                showPreviousItem();
+                                              } else if (e.keyCode == '39') {
+                                                showNextItem();
+                                              }
+                                            }
+                                            
+                                            nextItem.addEventListener('click', showNextItem);
+                                            previousItem.addEventListener('click', showPreviousItem);
+                                            document.addEventListener('keydown', keyPress);
+                                            navItem.addEventListener('click', toggleNavigation);
+                                              </script>
+                                        
+                                              <iframe width="500" height="250" src="test.html" frameborder="0"></iframe>
+<div class="bbody">
+                                              <div class="ccontainer ">
+                                                <div class="ccard">
+                                                  <div class="iiconBx">
+                                                    <i class="fas fa-palette"></i>
+                                                  </div>
+                                                  <div class="contentBx">
+                                                  <h2 class="hh2">Design</h2>
+                                                  <p class="pp">I have always loved design work or any kind</p>
+                                                    
+                                                </div>
+                                                </div>
+                                                <div class="ccard">
+                                                  <div class="iiconBx">
+                                                    <i class="fas fa-laptop-code"></i>
+                                                  </div>
+                                                  <div class="ccontentBx">
+                                                  <h2 class="hh2">Code</h2>
+                                                  <p class="pp">Still learning... stupid imposter syndrome.</p>
+                                                    
+                                                </div>
+                                                </div>
+                                                <div class="ccard">
+                                                  <div class="iiconBx">
+                                                    <i class="fas fa-rocket"></i>
+                                                  </div>
+                                                  <div class="ccontentBx">
+                                                  <h2 class="hh2">Launch</h2>
+                                                  <p class="pp">Where you want elephants to die.</p>
+                                                    
+                                                </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                              <style>
+                                                @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.bbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ebf5fc;
+}
+
+.ccontainer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1100px;
+}
+
+.ccontainer .ccard {
+  width: 320px;
+  margin: 20px;
+  padding: 40px 30px;
+  background: #ebf5fc;
+  border-radius: 40px;
+  box-shadow: -6px -6px 20px rgba(255,255,255,1),
+              6px 6px 20px rgba(0,0,0,0.1);
+}
+
+.ccontainer .ccard:hover {
+  box-shadow: inset -6px -6px 20px rgba(255,255,255,0.5),
+              inset 6px 6px 20px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.ccontainer .ccard .iiconBx i {
+  font-size: 120px;
+  color: #32a3b1;
+  margin-bottom: 5px;
+}
+
+.iiconBx {
+  position: relative;
+  text-align: center;
+}
+
+.ccontentBx {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.hh2 {
+  color: #32a3b1;
+  font-weight: 700;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+}
+
+.pp {
+  color: #32a3b1;
+}
+
+.aa {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 40px;
+  color: #32a3b1;
+  text-decoration: none;
+  font-size: 16px;
+  box-shadow: -4px -4px 15px rgba(255,255,255,1),
+              4px 4px 15px rgba(0,0,0,0.1);
+}
+
+.aa:hover {
+  box-shadow: inset -4px -4px 10px rgba(255,255,255,0.5),
+              inset 4px 4px 10px rgba(0,0,0,0.1);
+}
+.aa:hover span {
+  display: block;
+  transform: scale(0.96);
+}
+.iconBx,
+.contentBx:hover {
+  transform: scale(0.96);
+}
+                                              </style>
+<section class="containering"><a href="https://www.google.com.sg/" class="button" data-hover="click"><div>Hover</div></a></section>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,800);
+
+
+
+
+  section.containering{
+    min-width: 500px;
+    margin: 10% auto;
+    text-align: center;
+  }
+
+
+
+    .button:hover{cursor: pointer}
+    .button {
+      background: transparent; outline: none;
+      position: relative;
+      border: 2px solid #111;
+      padding: 15px 50px;
+      overflow: hidden;
+    }
+
+    /*button:before (attr data-hover)*/
+    .button:hover:before{opacity: 1; transform: translate(0,0);}
+    .button:before{
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em; left: 0;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: .8em;
+      opacity: 0;
+      transform: translate(-100%,0);
+      transition: all .3s ease-in-out;
+    }
+      /*button div (button text before hover)*/
+      .button:hover div{opacity: 0; transform: translate(100%,0)}
+      button div{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: .8em;
+        transition: all .3s ease-in-out;
+      }
+
+</style>
+                                        </div></div></section>
+
+                                            
+                                            
+<section id="contact"><div class="container"><div class="heading-wrapper"><div class="heading"><p class="title">Want to <br>contact me?</p><p class="separator"></p><p class="subtitle">Please, use the form below or send an email to <span class="mail"><a href="https://iamsven2005@gmail.com">iamsven2005@gmail.com</a> or WHATSAPP <a href="https://wa.me/6592962690?text=" target="_blank" class="pos-right chaty-tooltip" data-form="chaty-form-0-Whatsapp" data-hover=""><span class="channel-icon-Whatsapp"><span class="chaty-svg"><svg aria-hidden="true" class="ico_d " width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(0deg);"><circle class="color-element" cx="19.4395" cy="19.4395" r="19.4395" fill="#49E670"></circle><path d="M12.9821 10.1115C12.7029 10.7767 11.5862 11.442 10.7486 11.575C10.1902 11.7081 9.35269 11.8411 6.84003 10.7767C3.48981 9.44628 1.39593 6.25317 1.25634 6.12012C1.11674 5.85403 2.13001e-06 4.39053 2.13001e-06 2.92702C2.13001e-06 1.46351 0.83755 0.665231 1.11673 0.399139C1.39592 0.133046 1.8147 1.01506e-06 2.23348 1.01506e-06C2.37307 1.01506e-06 2.51267 1.01506e-06 2.65226 1.01506e-06C2.93144 1.01506e-06 3.21063 -2.02219e-06 3.35022 0.532183C3.62941 1.19741 4.32736 2.66092 4.32736 2.79397C4.46696 2.92702 4.46696 3.19311 4.32736 3.32616C4.18777 3.59225 4.18777 3.59224 3.90858 3.85834C3.76899 3.99138 3.6294 4.12443 3.48981 4.39052C3.35022 4.52357 3.21063 4.78966 3.35022 5.05576C3.48981 5.32185 4.18777 6.38622 5.16491 7.18449C6.42125 8.24886 7.39839 8.51496 7.81717 8.78105C8.09636 8.91409 8.37554 8.9141 8.65472 8.648C8.93391 8.38191 9.21309 7.98277 9.49228 7.58363C9.77146 7.31754 10.0507 7.1845 10.3298 7.31754C10.609 7.45059 12.2841 8.11582 12.5633 8.38191C12.8425 8.51496 13.1217 8.648 13.1217 8.78105C13.1217 8.78105 13.1217 9.44628 12.9821 10.1115Z" transform="translate(12.9597 12.9597)" fill="#FAFAFA"></path><path d="M0.196998 23.295L0.131434 23.4862L0.323216 23.4223L5.52771 21.6875C7.4273 22.8471 9.47325 23.4274 11.6637 23.4274C18.134 23.4274 23.4274 18.134 23.4274 11.6637C23.4274 5.19344 18.134 -0.1 11.6637 -0.1C5.19344 -0.1 -0.1 5.19344 -0.1 11.6637C-0.1 13.9996 0.624492 16.3352 1.93021 18.2398L0.196998 23.295ZM5.87658 19.8847L5.84025 19.8665L5.80154 19.8788L2.78138 20.8398L3.73978 17.9646L3.75932 17.906L3.71562 17.8623L3.43104 17.5777C2.27704 15.8437 1.55796 13.8245 1.55796 11.6637C1.55796 6.03288 6.03288 1.55796 11.6637 1.55796C17.2945 1.55796 21.7695 6.03288 21.7695 11.6637C21.7695 17.2945 17.2945 21.7695 11.6637 21.7695C9.64222 21.7695 7.76778 21.1921 6.18227 20.039L6.17557 20.0342L6.16817 20.0305L5.87658 19.8847Z" transform="translate(7.7758 7.77582)" fill="white" stroke="white" stroke-width="0.2"></path></svg></span></span></a></span>:</p></div><div class="social">
+    <a href="https://twitter.com/SvenCORNERGUYS" target="blank" rel="noopener noreferrer" title="Link to author's Twitter profile"> <i class="fab fa-twitter"></i></a>
+    <a id="profile-link" href="https://github.com/iamsven2005" target="blank" rel="noopener noreferrer" title="Link to author's GitHub Profile"> <i class="fab fa-github"></i></a>
+    <a href="https://codepen.io/iamsven" target="blank" rel="noopener noreferrer" title="Link to author's Codepen Profile"> <i class="fab fa-codepen"></i></a></div></div>
+    <form id="contact-form" action="#"><input placeholder="Name" name="name" type="text" required=""><input placeholder="Email" name="email" type="email" required="">
+        <textarea placeholder="Message" type="text" name="message"></textarea><input class="button" id="submit" type="submit" value="Submit"></form></div></section>
+        <footer><div class="wrapper"><h3>THANKS FOR VISITING</h3><div class="social">
+            <a href="https://twitter.com/SvenCORNERGUYS" target="blank" rel="noopener noreferrer" title="Link to author's Twitter profile"> <i class="fab fa-twitter"></i></a>
+            <a id="profile-link" href="https://github.com/iamsven2005" target="blank" rel="noopener noreferrer" title="Link to author's GitHub Profile"> <i class="fab fa-github"></i></a>
+            <a href="https://codepen.io/iamsven" target="blank" rel="noopener noreferrer" title="Link to author's Codepen Profile"> <i class="fab fa-codepen"></i></a></div></div></footer></div>
+  
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-94582a5b-1aea-7f9e-f47e-2cbaabac7070" crossorigin=""></script>
+
+
+</body></html>
